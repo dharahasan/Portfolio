@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Award, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import cert1 from "../components/certificate1.jpg";
+import cert2 from "../components/certificate2.jpg";
+import cert3 from "../components/certificate3.jpg";
+import cert4 from "../components/certificate4.jpg";
+import cert5 from "../components/certificate5.jpg";
+import cert6 from "../components/certificate6.jpg";
 
 const Certificates: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -36,7 +42,8 @@ const Certificates: React.FC = () => {
       issuer: "NPTL",
       date: "October 2024",
       description: "Comprehensive understanding of cloud computing concepts, services, deployment models, and implementation strategies.",
-      image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      image: cert1,
+      link: "https://drive.google.com/file/d/1DEX1HbQi_x_6dLA23sDy-Cx1u76jwzUc/view?usp=drive_link",
     },
     {
       id: 2,
@@ -44,7 +51,8 @@ const Certificates: React.FC = () => {
       issuer: "Coursera",
       date: "March 2024",
       description: "Mastered server-side JavaScript development with Node.js, including Express framework, RESTful APIs, and database integration.",
-      image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      image: cert2,
+      link: "https://drive.google.com/file/d/1WmYrEZNKcQzH3Jtnf2MnbsEpfpd0AG84/view?usp=drive_link",
     },
     {
       id: 3,
@@ -52,7 +60,8 @@ const Certificates: React.FC = () => {
       issuer: "Coursera",
       date: "March 2024",
       description: "Comprehensive web development fundamentals covering HTML structure, CSS styling, responsive design, and interactive JavaScript.",
-      image: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      image: cert3,
+      link: "https://drive.google.com/file/d/18tg7L9cIjN3oBeplzVUJbOgygnCux96R/view?usp=drive_link",
     },
     {
       id: 4,
@@ -60,7 +69,8 @@ const Certificates: React.FC = () => {
       issuer: "Coursera",
       date: "February 2024",
       description: "Advanced techniques for crafting effective prompts to optimize AI model responses for various applications.",
-      image: "https://images.pexels.com/photos/7567557/pexels-photo-7567557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      image: cert4,
+      link: "https://drive.google.com/file/d/1bYY-4YLHQUdomOYJ4ndy8LI-fTuj09zf/view?usp=drive_link",
     },
     {
       id: 5,
@@ -68,7 +78,8 @@ const Certificates: React.FC = () => {
       issuer: "Coursera",
       date: "February 2024",
       description: "In-depth study of generative AI technologies, model architectures, fine-tuning methods, and practical applications.",
-      image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      image: cert5,
+      link: "https://drive.google.com/file/d/1awbbqqkX3iwr4OVDPYYsEspMAQhQCNjN/view?usp=sharing",
     },
     {
       id: 6,
@@ -76,7 +87,8 @@ const Certificates: React.FC = () => {
       issuer: "Coursera",
       date: "January 2024",
       description: "Foundational understanding of generative AI concepts, capabilities, limitations, and ethical considerations.",
-      image: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      image: cert6,
+      link: "https://drive.google.com/file/d/1Dux02tV7ROmeXj04DQfEI8GZaJ2ZUj-Y/view?usp=sharing",
     }
   ];
 
@@ -92,7 +104,7 @@ const Certificates: React.FC = () => {
   };
 
   const currentCertificates = certificates.slice(
-    currentSlide * slidesToShow, 
+    currentSlide * slidesToShow,
     Math.min((currentSlide + 1) * slidesToShow, certificates.length)
   );
 
@@ -101,13 +113,15 @@ const Certificates: React.FC = () => {
     issuer, 
     date, 
     description,
-    image
+    image,
+    link
   }: {
     title: string;
     issuer: string;
     date: string;
     description: string;
     image: string;
+    link: string;
   }) => (
     <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden h-full flex flex-col transform transition-all duration-300 hover:scale-105">
       <div className="h-48 relative overflow-hidden">
@@ -137,10 +151,15 @@ const Certificates: React.FC = () => {
       </div>
       
       <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-        <button className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-sm font-medium transition-colors">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-sm font-medium transition-colors"
+        >
           View Certificate
           <ExternalLink size={16} className="ml-2" />
-        </button>
+        </a>
       </div>
     </div>
   );
@@ -172,6 +191,7 @@ const Certificates: React.FC = () => {
                 date={cert.date}
                 description={cert.description}
                 image={cert.image}
+                link={cert.link}
               />
             ))}
           </div>
