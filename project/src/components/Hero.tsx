@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Github as GitHub, Linkedin, Mail, Phone } from 'lucide-react';
+import photo from "../components/photo.jpg";
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -110,7 +111,7 @@ const Hero: React.FC = () => {
             <div className="w-64 h-64 sm:w-80 sm:h-80 mx-auto relative">
               <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 animate-pulse"></div>
               <img 
-                src="../../public/hi1.jpg" 
+                src={photo} 
                 alt="Rayapaneni Dharahasan" 
                 className="rounded-full object-cover w-full h-full border-4 border-white dark:border-gray-800 shadow-xl relative z-10"
               />
